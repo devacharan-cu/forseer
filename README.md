@@ -4,7 +4,7 @@ FORSEER is an AI-powered Industrial Resilience & Scenario Intelligence system fo
 
 Instead of a generic maintenance dashboard, FORSEER learns from machine history, detects emerging operational risk, simulates what could happen if nothing is done, compares preventive actions, recommends what to do, and supports recovery if a failure still occurs.
 
-See [docs/PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md) for the full product concept and [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the technical architecture and phase plan.
+See [docs/PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md) for the full product concept, [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for the technical architecture and phase plan, and [docs/DATA_MODEL.md](docs/DATA_MODEL.md) for the database schema.
 
 ## Tech stack
 
@@ -17,12 +17,22 @@ See [docs/PRODUCT_SPEC.md](docs/PRODUCT_SPEC.md) for the full product concept an
 
 ```bash
 npm install
-cp .env.example .env   # then fill in your Supabase project values
+cp .env.example .env   # then fill in your Supabase project URL and publishable key
 npm run dev
 ```
 
-The app runs at http://localhost:5173 by default.
+The app runs at http://localhost:4327 by default (see `vite.config.js`).
+
+### Database
+
+The schema lives in [supabase/migrations/001_initial_forseer_schema.sql](supabase/migrations/001_initial_forseer_schema.sql) and demo data in [supabase/seed.sql](supabase/seed.sql). With the [Supabase CLI](https://supabase.com/docs/guides/cli) linked to a project:
+
+```bash
+npx supabase link --project-ref <your-project-ref>
+npx supabase db push        # applies migrations
+psql "$DATABASE_URL" -f supabase/seed.sql   # or: supabase db reset (local dev)
+```
 
 ## Project status
 
-This repository is currently at **Phase 0 — Project Foundation**. No AI integration, simulation engine, or dashboard UI has been implemented yet. See [CLAUDE.md](CLAUDE.md) for the permanent project rules guiding future phases.
+This repository is currently at **Phase 1 — Backend & Data Foundation**. The database schema, seed data, and `src/api/` data access layer are in place. No simulation engine, AI integration, or dashboard UI has been implemented yet. See [CLAUDE.md](CLAUDE.md) for the permanent project rules guiding future phases.
