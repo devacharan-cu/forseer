@@ -5,6 +5,20 @@
   max-width: 960px;
 }
 
+.fs-page--wide {
+  max-width: none;
+}
+
+.fs-page-loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fs-space-3);
+  min-height: 320px;
+  color: var(--fs-text-secondary);
+  font-size: var(--fs-text-sm);
+}
+
 .fs-page__header {
   display: flex;
   flex-direction: column;
@@ -23,6 +37,114 @@
 
 .fs-page__tab-panel {
   padding-top: var(--fs-space-2);
+}
+
+/* Shared data display */
+.fs-muted {
+  color: var(--fs-text-secondary);
+}
+
+.fs-text-danger {
+  color: var(--fs-danger);
+}
+
+.fs-text-warning {
+  color: var(--fs-warning);
+}
+
+.fs-text-success {
+  color: var(--fs-success);
+}
+
+.fs-table-wrap {
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+}
+
+.fs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-text-sm);
+}
+
+.fs-table th {
+  position: sticky;
+  top: 0;
+  padding: 9px 12px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fs-text-tertiary);
+  background: var(--fs-bg-subtle);
+  border-bottom: 1px solid var(--fs-border);
+  white-space: nowrap;
+}
+
+.fs-table td {
+  padding: 9px 12px;
+  border-bottom: 1px solid var(--fs-border-subtle);
+  vertical-align: middle;
+}
+
+.fs-table tbody tr {
+  cursor: pointer;
+  transition: background-color var(--fs-transition-fast);
+}
+
+.fs-table tbody tr:hover {
+  background: var(--fs-bg-subtle);
+}
+
+.fs-table tbody tr.is-selected {
+  background: var(--fs-accent-subtle);
+}
+
+.fs-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.fs-table--static tbody tr {
+  cursor: default;
+}
+
+.fs-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  font-size: var(--fs-text-xs);
+  font-weight: 600;
+  color: var(--fs-text);
+  background: var(--fs-bg-subtle);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-full);
+}
+
+button.fs-chip:hover {
+  border-color: var(--fs-border-strong);
+}
+
+.fs-chip__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--fs-success);
+}
+
+.fs-chip--warning .fs-chip__dot {
+  background: var(--fs-warning);
+}
+
+.fs-chip--danger .fs-chip__dot {
+  background: var(--fs-danger);
+}
+
+.fs-chip--danger {
+  border-color: var(--fs-danger-border);
 }
 
 /* Settings */
@@ -131,4 +253,12 @@
 
 .fs-account__row > .fs-badge {
   margin-left: auto;
+}
+
+.fs-capitalize {
+  text-transform: capitalize;
+}
+
+.fs-nowrap {
+  white-space: nowrap;
 }

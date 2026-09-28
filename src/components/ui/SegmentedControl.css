@@ -1,0 +1,46 @@
+.fs-segmented {
+  display: inline-flex;
+  padding: 3px;
+  gap: 2px;
+  background: var(--fs-bg-inset);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+}
+
+.fs-segmented__option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: none;
+  background: transparent;
+  color: var(--fs-text-secondary);
+  font-weight: 500;
+  border-radius: calc(var(--fs-radius-md) - 3px);
+  transition: background-color var(--fs-transition-fast), color var(--fs-transition-fast);
+}
+
+.fs-segmented--md .fs-segmented__option {
+  height: 28px;
+  padding: 0 12px;
+  font-size: var(--fs-text-sm);
+}
+
+.fs-segmented--sm .fs-segmented__option {
+  height: 24px;
+  padding: 0 9px;
+  font-size: var(--fs-text-xs);
+}
+
+.fs-segmented__option:hover {
+  color: var(--fs-text);
+}
+
+.fs-segmented__option--active {
+  background: var(--fs-surface-raised);
+  color: var(--fs-text);
+  box-shadow: var(--fs-shadow-sm);
+}
+
+.fs-segmented__icon {
+  display: inline-flex;
+}

@@ -1,0 +1,86 @@
+.fs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.fs-field__label {
+  font-size: var(--fs-text-xs);
+  font-weight: 600;
+  color: var(--fs-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.fs-field__hint {
+  font-size: var(--fs-text-xs);
+  color: var(--fs-text-tertiary);
+}
+
+.fs-select,
+.fs-number {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 38px;
+  background: var(--fs-bg-subtle);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+  transition: border-color var(--fs-transition-fast);
+}
+
+.fs-select:focus-within,
+.fs-number:focus-within {
+  border-color: var(--fs-accent);
+  box-shadow: 0 0 0 3px var(--fs-focus-ring);
+}
+
+.fs-select select {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  padding: 0 34px 0 12px;
+  background: transparent;
+  border: none;
+  color: var(--fs-text);
+  font-size: var(--fs-text-base);
+  cursor: pointer;
+}
+
+.fs-select select:focus {
+  outline: none;
+}
+
+.fs-select select option {
+  background: var(--fs-surface-raised);
+  color: var(--fs-text);
+}
+
+.fs-select__chevron {
+  position: absolute;
+  right: 12px;
+  pointer-events: none;
+  color: var(--fs-text-tertiary);
+}
+
+.fs-number input {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0 12px;
+  background: transparent;
+  border: none;
+  color: var(--fs-text);
+  font-size: var(--fs-text-base);
+}
+
+.fs-number input:focus {
+  outline: none;
+}
+
+.fs-number__suffix {
+  padding-right: 12px;
+  color: var(--fs-text-tertiary);
+  font-size: var(--fs-text-sm);
+}

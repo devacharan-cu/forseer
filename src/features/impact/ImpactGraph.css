@@ -1,0 +1,238 @@
+.fs-graph {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-lg);
+  overflow: hidden;
+  background: var(--fs-bg-subtle);
+}
+
+.fs-graph .react-flow {
+  --xy-background-color: var(--fs-bg-subtle);
+  --xy-controls-button-background-color: var(--fs-surface-raised);
+  --xy-controls-button-background-color-hover: var(--fs-bg-inset);
+  --xy-controls-button-color: var(--fs-text);
+  --xy-controls-button-border-color: var(--fs-border);
+  --xy-edge-label-background-color: var(--fs-surface-raised);
+}
+
+.fs-graph .react-flow__controls {
+  box-shadow: var(--fs-shadow-md);
+  border-radius: var(--fs-radius-sm);
+  overflow: hidden;
+}
+
+.fs-graph__legend {
+  position: absolute;
+  top: var(--fs-space-3);
+  left: var(--fs-space-3);
+  display: flex;
+  gap: var(--fs-space-2);
+  pointer-events: none;
+}
+
+.fs-graph__col {
+  padding: 3px 9px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fs-text-tertiary);
+  background: var(--fs-surface-raised);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-full);
+}
+
+.fs-graph__toggle {
+  position: absolute;
+  top: var(--fs-space-3);
+  right: var(--fs-space-3);
+  padding: 4px 11px;
+  font-size: var(--fs-text-xs);
+  font-weight: 600;
+  color: var(--fs-text);
+  background: var(--fs-surface-raised);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-full);
+  z-index: 5;
+}
+
+.fs-graph__toggle:hover {
+  border-color: var(--fs-border-strong);
+}
+
+.fs-gnode--group {
+  border-style: dashed;
+  border-left-style: solid;
+  cursor: default;
+}
+
+/* Nodes */
+.fs-gnode {
+  position: relative;
+  min-width: 250px;
+  padding: 9px 12px;
+  font-family: var(--fs-font-sans);
+  color: var(--fs-text);
+  background: var(--fs-surface-raised);
+  border: 1px solid var(--fs-border);
+  border-left: 3px solid var(--fs-border-strong);
+  border-radius: var(--fs-radius-md);
+  box-shadow: var(--fs-shadow-sm);
+  transition: opacity 200ms ease, box-shadow 150ms ease, border-color 150ms ease;
+  cursor: pointer;
+}
+
+.fs-gnode--line {
+  min-width: 270px;
+  padding: 12px 14px;
+  border-left-color: #e0a800;
+  cursor: default;
+}
+
+.fs-gnode--outcome {
+  min-width: 220px;
+  cursor: default;
+}
+
+.fs-gnode--success {
+  border-left-color: var(--fs-success);
+}
+
+.fs-gnode--warning {
+  border-left-color: var(--fs-warning);
+}
+
+.fs-gnode--danger {
+  border-left-color: var(--fs-danger);
+}
+
+.fs-gnode.is-dimmed {
+  opacity: 0.22;
+}
+
+.fs-gnode.is-selected {
+  border-color: var(--fs-accent);
+  box-shadow: 0 0 0 3px var(--fs-focus-ring), var(--fs-shadow-md);
+}
+
+.fs-gnode.is-impacted {
+  box-shadow: 0 0 0 1px var(--fs-danger-border), 0 6px 18px color-mix(in srgb, var(--fs-danger) 18%, transparent);
+}
+
+.fs-gnode__row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.fs-gnode__muted {
+  color: var(--fs-text-secondary);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.fs-gnode__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 10px;
+  margin-top: 4px;
+  font-size: 11px;
+  color: var(--fs-text-secondary);
+}
+
+.fs-gnode__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--fs-success);
+  align-self: center;
+}
+
+.fs-gnode--warning .fs-gnode__dot {
+  background: var(--fs-warning);
+}
+
+.fs-gnode--danger .fs-gnode__dot {
+  background: var(--fs-danger);
+}
+
+.fs-gnode__risk {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.fs-gnode__risk--success {
+  color: var(--fs-success);
+}
+
+.fs-gnode__risk--warning {
+  color: var(--fs-warning);
+}
+
+.fs-gnode__risk--danger {
+  color: var(--fs-danger);
+}
+
+.fs-gnode__chip {
+  padding: 1px 6px;
+  border-radius: var(--fs-radius-full);
+  font-weight: 600;
+}
+
+.fs-gnode__chip--danger {
+  color: var(--fs-danger);
+  background: var(--fs-danger-bg);
+}
+
+.fs-gnode__chip--warning {
+  color: var(--fs-warning);
+  background: var(--fs-warning-bg);
+}
+
+.fs-gnode__prio {
+  padding: 0 5px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 4px;
+}
+
+.fs-gnode__prio--critical {
+  color: var(--fs-danger);
+  background: var(--fs-danger-bg);
+}
+
+.fs-gnode__prio--high {
+  color: var(--fs-warning);
+  background: var(--fs-warning-bg);
+}
+
+.fs-gnode__big {
+  margin-top: 4px;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.fs-gnode--outcome.fs-gnode--danger .fs-gnode__big {
+  color: var(--fs-danger);
+}
+
+.fs-gnode--outcome.fs-gnode--warning .fs-gnode__big {
+  color: var(--fs-warning);
+}
+
+.fs-gnode .react-flow__handle {
+  width: 6px;
+  height: 6px;
+  min-width: 6px;
+  min-height: 6px;
+  background: var(--fs-border-strong);
+  border: none;
+  opacity: 0;
+}

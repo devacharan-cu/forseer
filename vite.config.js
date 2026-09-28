@@ -8,4 +8,9 @@ export default defineConfig({
     port: 4327,
     strictPort: true,
   },
+  build: {
+    // three.js + React Three Fiber form one ~1 MB chunk (~280 kB gzip). It is
+    // only loaded lazily with the 3D views, never on first paint.
+    chunkSizeWarningLimit: 1100,
+  },
 })

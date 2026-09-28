@@ -1,15 +1,39 @@
 import { useTheme } from '../../context/ThemeContext.jsx'
+import { useFactoryData } from '../../state/FactoryDataContext.jsx'
 import Button from '../ui/Button.jsx'
 import Dropdown from '../ui/Dropdown.jsx'
 import Icon from '../ui/Icon.jsx'
-import Input from '../ui/Input.jsx'
 import StatusDot from '../ui/StatusDot.jsx'
 import Tooltip from '../ui/Tooltip.jsx'
+import SearchBox from './SearchBox.jsx'
 import './TopBar.css'
 
 // NOVA-01 is the only factory this prototype has; the dropdown is real UI wired
 // to a single real option rather than a hard-coded label.
 const FACTORIES = [{ id: 'NOVA-01', label: 'NOVA-01' }]
+
+// Says exactly where the numbers on screen come from.
+function DataSource() {
+  const { source, warning, loading, supabaseConfigured, loadedAt, reload } = useFactoryData()
+  const label = loading ? 'Loading…' : source === 'supabase' ? 'Supabase · live' : 'Seed snapshot'
+  const tip = loading
+    ? 'Loading factory data'
+    : source === 'supabase'
+      ? `Live data from Supabase, loaded ${new Date(loadedAt).toLocaleTimeString()}`
+      : warning ?? (supabaseConfigured ? 'Seed snapshot' : 'Supabase is not configured — showing the NOVA-01 seed data (identical to supabase/seed.sql)')
+  return (
+    <span className="fs-topbar__source">
+      <Tooltip content={tip}>
+        <span className="fs-topbar__source-label" tabIndex={0}>
+          <StatusDot variant={source === 'supabase' ? 'success' : warning ? 'warning' : 'neutral'} pulse={source === 'supabase'} label={label} />
+        </span>
+      </Tooltip>
+      <Tooltip content="Reload factory data">
+        <Button variant="ghost" size="sm" iconOnly icon={<Icon name="refresh" size={15} />} onClick={reload} disabled={loading} aria-label="Reload factory data" />
+      </Tooltip>
+    </span>
+  )
+}
 
 export default function TopBar({ title, onOpenSettings, onOpenAccount }) {
   const { theme, toggleTheme } = useTheme()
@@ -21,7 +45,7 @@ export default function TopBar({ title, onOpenSettings, onOpenAccount }) {
       </div>
 
       <div className="fs-topbar__search">
-        <Input icon={<Icon name="search" size={16} />} placeholder='Search machines, orders, incidents.. (e.g. "M4", "ORD-0482")' aria-label="Search" />
+        <SearchBox />
       </div>
 
       <div className="fs-topbar__actions">
@@ -36,9 +60,7 @@ export default function TopBar({ title, onOpenSettings, onOpenAccount }) {
           items={FACTORIES.map((factory) => ({ id: factory.id, label: factory.label, icon: <Icon name="factory" size={15} /> }))}
         />
 
-        <span className="fs-topbar__live">
-          <StatusDot variant="success" pulse label="Live" />
-        </span>
+        <DataSource />
 
         <Tooltip content={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}>
           <Button

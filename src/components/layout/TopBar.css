@@ -30,8 +30,16 @@
   margin-left: auto;
 }
 
-.fs-topbar__live {
-  padding: 0 var(--fs-space-2);
+.fs-topbar__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 0 var(--fs-space-1) 0 var(--fs-space-2);
+}
+
+.fs-topbar__source-label {
+  display: inline-flex;
+  white-space: nowrap;
 }
 
 .fs-topbar__avatar {

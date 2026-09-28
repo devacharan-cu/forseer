@@ -40,10 +40,9 @@ export default function Button({
 
   return (
     <button type={type} className={classes} disabled={disabled} {...rest}>
-      {icon && iconPosition === 'left' ? <span className="fs-btn__icon">{icon}</span> : null}
+      {icon && (iconOnly || iconPosition === 'left') ? <span className="fs-btn__icon">{icon}</span> : null}
       {!iconOnly && children ? <span className="fs-btn__label">{children}</span> : null}
-      {iconOnly && !children ? <span className="fs-btn__icon">{icon}</span> : null}
-      {icon && iconPosition === 'right' && !iconOnly ? <span className="fs-btn__icon">{icon}</span> : null}
+      {icon && !iconOnly && iconPosition === 'right' ? <span className="fs-btn__icon">{icon}</span> : null}
     </button>
   )
 }
