@@ -42,6 +42,18 @@ npm test              # engine test suite (Node's built-in test runner)
 npm run engine:demo   # prints the NOVA-01 hero scenarios computed by the engine
 ```
 
+### AI layer
+
+The AI layer in [src/ai/](src/ai/) proposes and explains; the engine calculates. Model calls go through the `forseer-ai` Supabase Edge Function, which holds the API key server-side. See [docs/AI_ARCHITECTURE.md](docs/AI_ARCHITECTURE.md).
+
+```bash
+npx supabase secrets set ANTHROPIC_API_KEY=...          # server-side only, never VITE_
+npx supabase functions deploy forseer-ai --no-verify-jwt
+npm run check:edge    # optional: type-check and test the Edge Function (needs Deno)
+```
+
+Without the function deployed, FORSEER still works: every workflow falls back to engine-only results.
+
 ## Project status
 
-This repository is currently at **Phase 2 — Deterministic Simulation Engine**. The database schema, seed data, `src/api/` data access layer, and the tested simulation engine are in place. No AI integration or dashboard UI has been implemented yet. See [CLAUDE.md](CLAUDE.md) for the permanent project rules guiding future phases.
+This repository is currently at **Phase 3 — AI Intelligence Layer**. The database schema, seed data, `src/api/` data access layer, the tested simulation engine and the AI layer are in place. No dashboard UI has been implemented yet. See [CLAUDE.md](CLAUDE.md) for the permanent project rules guiding future phases.

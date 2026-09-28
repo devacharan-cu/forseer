@@ -115,12 +115,22 @@ src/
 - `npm run build` / `npm run lint`
 - `npm test` — engine tests (`node:test`, files in `tests/`)
 - `npm run engine:demo` — NOVA-01 hero flow from the engine
+- `npm run check:edge` — type-check and test the Edge Function (requires Deno)
 
 ## Engine rules
 
 - `src/engine/` stays pure: no Supabase, network, AI, clock (`Date.now`), randomness or third-party imports. `tests/engine/purity.test.js` enforces this.
 - Engine imports use explicit `.js` extensions so Node can run the tests without a bundler.
 - Demo data (NOVA-01, hero scenarios) lives in `src/data/`, never in the engine. `src/data/nova01.js` must stay in sync with `supabase/seed.sql` (enforced by a test).
+
+## AI rules
+
+- `src/ai/` proposes, parses and explains; it never computes figures. Every number in AI output must be grounded in engine facts or the user's text (`src/ai/grounding.js`).
+- All model calls go through `provider.generateStructured(...)`. Provider SDKs, model names and API keys live only in `supabase/functions/forseer-ai/`; never in `src/` or `VITE_*` variables.
+- AI output is untrusted: validate schema, references and grounding; proposed actions must pass engine validation.
+- AI never writes factory data; it returns drafts marked `requiresConfirmation`.
+- Every AI step must degrade gracefully to engine-only behaviour. Tests use a mock provider and no network.
+- `src/ai/` imports the engine only via `src/engine/index.js`, and never imports `src/api/`.
 
 ## General working rules
 
