@@ -1,0 +1,12 @@
+.app-shell {
+  max-width: 640px;
+  margin: 4rem auto;
+  padding: 0 1.5rem;
+  font-family: system-ui, sans-serif;
+  text-align: center;
+}
+
+.status {
+  color: #666;
+  font-size: 0.9rem;
+}
