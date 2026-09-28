@@ -13,7 +13,7 @@ const TABS = [
 ]
 
 export default function Settings() {
-  const { theme, setTheme } = useTheme()
+  const { theme, setTheme, resetTheme } = useTheme()
   const [activeTab, setActiveTab] = useState('appearance')
   const [confirmOpen, setConfirmOpen] = useState(false)
 
@@ -72,9 +72,9 @@ export default function Settings() {
                 <dd>NOVA-01</dd>
               </div>
               <div>
-                <dt>Build phase</dt>
+                <dt>Status</dt>
                 <dd>
-                  <Badge variant="accent">Phase 4A — Frontend shell</Badge>
+                  <Badge variant="accent">Prototype</Badge>
                 </dd>
               </div>
             </dl>
@@ -95,7 +95,7 @@ export default function Settings() {
             <Button
               variant="danger"
               onClick={() => {
-                localStorage.removeItem('forseer-theme')
+                resetTheme()
                 setConfirmOpen(false)
               }}
             >

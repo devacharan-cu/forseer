@@ -40,7 +40,18 @@ export function ThemeProvider({ children }) {
     setThemeState((current) => (current === 'dark' ? 'light' : 'dark'))
   }, [])
 
-  const value = useMemo(() => ({ theme, setTheme, toggleTheme }), [theme, setTheme, toggleTheme])
+  // Clears the saved choice and falls back to the OS preference, applied immediately.
+  const resetTheme = useCallback(() => {
+    try {
+      localStorage.removeItem(STORAGE_KEY)
+    } catch {
+      // Ignore storage failures; the in-memory theme still resets below.
+    }
+    const preferred = typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+    setThemeState(preferred)
+  }, [])
+
+  const value = useMemo(() => ({ theme, setTheme, toggleTheme, resetTheme }), [theme, setTheme, toggleTheme, resetTheme])
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>
 }
