@@ -1,0 +1,134 @@
+.fs-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs-space-5);
+  max-width: 960px;
+}
+
+.fs-page__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.fs-page__title {
+  font-size: var(--fs-text-xl);
+  font-weight: 600;
+}
+
+.fs-page__subtitle {
+  font-size: var(--fs-text-base);
+  color: var(--fs-text-secondary);
+}
+
+.fs-page__tab-panel {
+  padding-top: var(--fs-space-2);
+}
+
+/* Settings */
+.fs-settings__theme-options {
+  display: flex;
+  gap: var(--fs-space-3);
+  margin-bottom: var(--fs-space-5);
+}
+
+.fs-settings__theme-option {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-2);
+  padding: var(--fs-space-3) var(--fs-space-4);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+  background: var(--fs-bg-subtle);
+  color: var(--fs-text-secondary);
+  font-weight: 500;
+}
+
+.fs-settings__theme-option--active {
+  border-color: var(--fs-accent);
+  background: var(--fs-accent-subtle);
+  color: var(--fs-accent);
+}
+
+.fs-settings__danger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fs-space-4);
+  padding-top: var(--fs-space-4);
+  border-top: 1px solid var(--fs-border-subtle);
+}
+
+.fs-settings__danger-title {
+  font-weight: 600;
+  font-size: var(--fs-text-base);
+}
+
+.fs-settings__danger-description {
+  font-size: var(--fs-text-sm);
+  color: var(--fs-text-secondary);
+}
+
+.fs-settings__about {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs-space-3);
+}
+
+.fs-settings__about > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--fs-space-4);
+  padding-bottom: var(--fs-space-3);
+  border-bottom: 1px solid var(--fs-border-subtle);
+}
+
+.fs-settings__about > div:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.fs-settings__about dt {
+  font-size: var(--fs-text-sm);
+  color: var(--fs-text-secondary);
+}
+
+.fs-settings__about dd {
+  margin: 0;
+  font-size: var(--fs-text-base);
+  font-weight: 500;
+}
+
+/* Account */
+.fs-account__row {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-4);
+}
+
+.fs-account__avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--fs-accent);
+  color: #fff;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.fs-account__name {
+  font-weight: 600;
+}
+
+.fs-account__meta {
+  font-size: var(--fs-text-sm);
+  color: var(--fs-text-secondary);
+}
+
+.fs-account__row > .fs-badge {
+  margin-left: auto;
+}

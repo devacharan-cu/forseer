@@ -1,0 +1,63 @@
+.fs-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fs-space-1);
+  font-weight: 600;
+  border-radius: var(--fs-radius-full);
+  border: 1px solid transparent;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.fs-badge--md {
+  padding: 4px var(--fs-space-2);
+  font-size: var(--fs-text-xs);
+}
+
+.fs-badge--sm {
+  padding: 2px 6px;
+  font-size: 11px;
+}
+
+.fs-badge__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.fs-badge--neutral {
+  background: var(--fs-bg-inset);
+  color: var(--fs-text-secondary);
+  border-color: var(--fs-border);
+}
+
+.fs-badge--success {
+  background: var(--fs-success-bg);
+  color: var(--fs-success);
+  border-color: var(--fs-success-border);
+}
+
+.fs-badge--warning {
+  background: var(--fs-warning-bg);
+  color: var(--fs-warning);
+  border-color: var(--fs-warning-border);
+}
+
+.fs-badge--danger {
+  background: var(--fs-danger-bg);
+  color: var(--fs-danger);
+  border-color: var(--fs-danger-border);
+}
+
+.fs-badge--info {
+  background: var(--fs-info-bg);
+  color: var(--fs-info);
+  border-color: var(--fs-accent-border);
+}
+
+.fs-badge--accent {
+  background: var(--fs-accent-subtle);
+  color: var(--fs-accent);
+  border-color: var(--fs-accent-border);
+}

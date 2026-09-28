@@ -1,0 +1,130 @@
+/* FORSEER design tokens. Light is the default; dark is TRUE BLACK (not navy). */
+
+:root {
+  /* Light mode (default) */
+  --fs-bg: #ffffff;
+  --fs-bg-subtle: #f7f8fa;
+  --fs-bg-inset: #f1f2f4;
+  --fs-surface: #ffffff;
+  --fs-surface-raised: #ffffff;
+  --fs-border: #e5e7eb;
+  --fs-border-subtle: #eef0f2;
+  --fs-border-strong: #d1d5db;
+
+  --fs-text: #101317;
+  --fs-text-secondary: #5b6470;
+  --fs-text-tertiary: #8a919c;
+  --fs-text-on-accent: #ffffff;
+
+  --fs-accent: #2563eb;
+  --fs-accent-hover: #1d4ed8;
+  --fs-accent-active: #1e40af;
+  --fs-accent-subtle: #eff4ff;
+  --fs-accent-border: #bfd4fb;
+
+  --fs-success: #15803d;
+  --fs-success-bg: #eaf7ee;
+  --fs-success-border: #bfe6c9;
+
+  --fs-warning: #b45309;
+  --fs-warning-bg: #fef3e2;
+  --fs-warning-border: #f6d9a8;
+
+  --fs-danger: #b91c1c;
+  --fs-danger-bg: #fdecec;
+  --fs-danger-border: #f5c2c2;
+
+  --fs-info: #2563eb;
+  --fs-info-bg: #eff4ff;
+
+  --fs-overlay: rgba(15, 18, 22, 0.45);
+  --fs-focus-ring: rgba(37, 99, 235, 0.35);
+
+  --fs-shadow-sm: 0 1px 2px rgba(16, 19, 23, 0.06);
+  --fs-shadow-md: 0 4px 12px rgba(16, 19, 23, 0.08);
+  --fs-shadow-lg: 0 12px 32px rgba(16, 19, 23, 0.14);
+
+  --fs-space-1: 4px;
+  --fs-space-2: 8px;
+  --fs-space-3: 12px;
+  --fs-space-4: 16px;
+  --fs-space-5: 20px;
+  --fs-space-6: 24px;
+  --fs-space-8: 32px;
+  --fs-space-10: 40px;
+
+  --fs-radius-sm: 6px;
+  --fs-radius-md: 10px;
+  --fs-radius-lg: 14px;
+  --fs-radius-full: 999px;
+
+  --fs-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --fs-font-mono: ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace;
+
+  --fs-text-xs: 12px;
+  --fs-text-sm: 13px;
+  --fs-text-base: 14px;
+  --fs-text-md: 15px;
+  --fs-text-lg: 18px;
+  --fs-text-xl: 22px;
+  --fs-text-2xl: 28px;
+
+  --fs-sidebar-width: 248px;
+  --fs-topbar-height: 60px;
+
+  --fs-transition-fast: 120ms ease;
+  --fs-transition-base: 180ms ease;
+
+  color-scheme: light;
+}
+
+/* Explicit dark mode (data-theme="dark" set by the theme toggle) */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --fs-bg: #000000;
+  --fs-bg-subtle: #0a0a0a;
+  --fs-bg-inset: #141414;
+  --fs-surface: #0d0d0e;
+  --fs-surface-raised: #141516;
+  --fs-border: #262a2e;
+  --fs-border-subtle: #1c1e21;
+  --fs-border-strong: #34383d;
+
+  --fs-text: #f2f3f4;
+  --fs-text-secondary: #a7adb5;
+  --fs-text-tertiary: #6b7280;
+  --fs-text-on-accent: #ffffff;
+
+  --fs-accent: #3b82f6;
+  --fs-accent-hover: #60a5fa;
+  --fs-accent-active: #2563eb;
+  --fs-accent-subtle: rgba(59, 130, 246, 0.14);
+  --fs-accent-border: rgba(59, 130, 246, 0.4);
+
+  --fs-success: #34d399;
+  --fs-success-bg: rgba(52, 211, 153, 0.12);
+  --fs-success-border: rgba(52, 211, 153, 0.3);
+
+  --fs-warning: #f59e0b;
+  --fs-warning-bg: rgba(245, 158, 11, 0.12);
+  --fs-warning-border: rgba(245, 158, 11, 0.3);
+
+  --fs-danger: #f87171;
+  --fs-danger-bg: rgba(248, 113, 113, 0.12);
+  --fs-danger-border: rgba(248, 113, 113, 0.3);
+
+  --fs-info: #3b82f6;
+  --fs-info-bg: rgba(59, 130, 246, 0.12);
+
+  --fs-overlay: rgba(0, 0, 0, 0.65);
+  --fs-focus-ring: rgba(59, 130, 246, 0.45);
+
+  --fs-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --fs-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55);
+  --fs-shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* Explicit light mode class, used to override an OS-level dark preference. */
+:root[data-theme='light'] {
+  color-scheme: light;
+}

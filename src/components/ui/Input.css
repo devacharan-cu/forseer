@@ -1,0 +1,57 @@
+.fs-input {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+  background: var(--fs-bg-subtle);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-md);
+  transition: border-color var(--fs-transition-fast), background-color var(--fs-transition-fast);
+}
+
+.fs-input:focus-within {
+  border-color: var(--fs-accent);
+  background: var(--fs-surface);
+  box-shadow: 0 0 0 3px var(--fs-focus-ring);
+}
+
+.fs-input--sm {
+  height: 32px;
+}
+
+.fs-input--md {
+  height: 36px;
+}
+
+.fs-input--lg {
+  height: 42px;
+}
+
+.fs-input__icon {
+  display: inline-flex;
+  align-items: center;
+  padding-left: var(--fs-space-3);
+  color: var(--fs-text-tertiary);
+}
+
+.fs-input__field {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  padding: 0 var(--fs-space-3);
+  background: transparent;
+  border: none;
+  color: var(--fs-text);
+}
+
+.fs-input--with-icon .fs-input__field {
+  padding-left: var(--fs-space-2);
+}
+
+.fs-input__field:focus {
+  outline: none;
+}
+
+.fs-input__field::placeholder {
+  color: var(--fs-text-tertiary);
+}

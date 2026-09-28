@@ -1,0 +1,124 @@
+.fs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--fs-space-2);
+  border: 1px solid transparent;
+  border-radius: var(--fs-radius-md);
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background-color var(--fs-transition-fast), border-color var(--fs-transition-fast),
+    color var(--fs-transition-fast), box-shadow var(--fs-transition-fast);
+}
+
+.fs-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fs-btn--full {
+  width: 100%;
+}
+
+/* Sizes */
+.fs-btn--sm {
+  height: 30px;
+  padding: 0 var(--fs-space-3);
+  font-size: var(--fs-text-sm);
+}
+
+.fs-btn--md {
+  height: 36px;
+  padding: 0 var(--fs-space-4);
+  font-size: var(--fs-text-base);
+}
+
+.fs-btn--lg {
+  height: 44px;
+  padding: 0 var(--fs-space-5);
+  font-size: var(--fs-text-md);
+}
+
+.fs-btn--icon-only.fs-btn--sm {
+  width: 30px;
+  padding: 0;
+}
+
+.fs-btn--icon-only.fs-btn--md {
+  width: 36px;
+  padding: 0;
+}
+
+.fs-btn--icon-only.fs-btn--lg {
+  width: 44px;
+  padding: 0;
+}
+
+/* Variants */
+.fs-btn--primary {
+  background: var(--fs-accent);
+  color: var(--fs-text-on-accent);
+  border-color: var(--fs-accent);
+}
+
+.fs-btn--primary:hover:not(:disabled) {
+  background: var(--fs-accent-hover);
+  border-color: var(--fs-accent-hover);
+}
+
+.fs-btn--primary:active:not(:disabled) {
+  background: var(--fs-accent-active);
+  border-color: var(--fs-accent-active);
+}
+
+.fs-btn--secondary {
+  background: var(--fs-surface-raised);
+  color: var(--fs-text);
+  border-color: var(--fs-border);
+}
+
+.fs-btn--secondary:hover:not(:disabled) {
+  background: var(--fs-bg-subtle);
+  border-color: var(--fs-border-strong);
+}
+
+.fs-btn--outline {
+  background: transparent;
+  color: var(--fs-text);
+  border-color: var(--fs-border-strong);
+}
+
+.fs-btn--outline:hover:not(:disabled) {
+  background: var(--fs-bg-subtle);
+}
+
+.fs-btn--ghost {
+  background: transparent;
+  color: var(--fs-text-secondary);
+  border-color: transparent;
+}
+
+.fs-btn--ghost:hover:not(:disabled) {
+  background: var(--fs-bg-subtle);
+  color: var(--fs-text);
+}
+
+.fs-btn--danger {
+  background: var(--fs-danger);
+  color: #ffffff;
+  border-color: var(--fs-danger);
+}
+
+.fs-btn--danger:hover:not(:disabled) {
+  filter: brightness(0.92);
+}
+
+.fs-btn__icon {
+  display: inline-flex;
+  flex-shrink: 0;
+}
+
+.fs-btn__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

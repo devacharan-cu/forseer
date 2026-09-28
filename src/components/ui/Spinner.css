@@ -1,0 +1,13 @@
+.fs-spinner {
+  display: inline-block;
+  border-radius: 50%;
+  border: 2px solid var(--fs-border-strong);
+  border-top-color: var(--fs-accent);
+  animation: fs-spin 700ms linear infinite;
+}
+
+@keyframes fs-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

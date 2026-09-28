@@ -1,0 +1,24 @@
+.fs-shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--fs-bg);
+}
+
+.fs-shell__main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.fs-shell__content {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--fs-space-6);
+}
+
+@media (max-width: 720px) {
+  .fs-shell__content {
+    padding: var(--fs-space-4);
+  }
+}

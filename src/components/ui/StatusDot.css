@@ -1,0 +1,51 @@
+.fs-status-dot-wrap {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--fs-space-2);
+}
+
+.fs-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.fs-status-dot--success {
+  background: var(--fs-success);
+}
+
+.fs-status-dot--warning {
+  background: var(--fs-warning);
+}
+
+.fs-status-dot--danger {
+  background: var(--fs-danger);
+}
+
+.fs-status-dot--neutral {
+  background: var(--fs-text-tertiary);
+}
+
+.fs-status-dot--pulse {
+  box-shadow: 0 0 0 0 currentColor;
+  animation: fs-pulse 1.8s ease-out infinite;
+}
+
+.fs-status-dot__label {
+  font-size: var(--fs-text-sm);
+  color: var(--fs-text-secondary);
+  font-weight: 500;
+}
+
+@keyframes fs-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 6px rgba(21, 128, 61, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(21, 128, 61, 0);
+  }
+}
