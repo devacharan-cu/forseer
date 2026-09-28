@@ -33,7 +33,9 @@ Which machines feed which line, and how much each contributes (`contribution_per
 
 ### orders
 
-A production order against one line, with a `deadline` and `priority`. `status` tracks lifecycle (`pending` → `in_progress` → `completed`, or `at_risk` / `late` / `cancelled`). This is the table the future simulation engine will check deadline risk against.
+A production order against one line, with a `deadline` and `priority`. `status` tracks lifecycle (`pending` → `in_progress` → `completed`, or `at_risk` / `late` / `cancelled`). This is the table the simulation engine checks deadline risk against.
+
+`required_production_hours` is the **remaining** work, measured in hours of the line running at its nominal capacity. Update it as production progresses. The engine does not track partial progress itself. Seed orders have fixed ids (`c0000000-…-000000000482` for ORD-0482), so demo scenarios can reference them.
 
 ### maintenance_events
 
@@ -76,7 +78,7 @@ A machine's risk affects a line's real (assigned) capacity, and a line's capacit
 | Concern | Owner | Fields |
 |---|---|---|
 | Machine/line/order state | Data (Phase 1) | everything in `machines`, `production_lines`, `machine_line_assignments`, `orders` |
-| Simulation math | Engine (Phase 2), `src/engine/` | `scenario_impacts.*` (except `id`/`created_at`), `scenarios.assumptions` (input only) |
+| Simulation math | Engine (Phase 2), `src/engine/` — see [SIMULATION_ENGINE.md](SIMULATION_ENGINE.md) | `scenario_impacts.*` (except `id`/`created_at`), `scenarios.assumptions` (input only) |
 | Interpretation & recommendations | AI (Phase 3), `src/ai/` | `incidents.ai_summary`, `incidents.ai_analysis`, `recommendations.summary`, `recommendations.reasoning`, `recommendations.confidence` |
 
 The AI layer must never write to `scenario_impacts` — that table exists specifically so simulation numbers always come from deterministic code, per [CLAUDE.md](../CLAUDE.md).

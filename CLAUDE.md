@@ -109,6 +109,19 @@ src/
   supabaseClient.js
 ```
 
+## Commands
+
+- `npm run dev` — app on http://localhost:4327
+- `npm run build` / `npm run lint`
+- `npm test` — engine tests (`node:test`, files in `tests/`)
+- `npm run engine:demo` — NOVA-01 hero flow from the engine
+
+## Engine rules
+
+- `src/engine/` stays pure: no Supabase, network, AI, clock (`Date.now`), randomness or third-party imports. `tests/engine/purity.test.js` enforces this.
+- Engine imports use explicit `.js` extensions so Node can run the tests without a bundler.
+- Demo data (NOVA-01, hero scenarios) lives in `src/data/`, never in the engine. `src/data/nova01.js` must stay in sync with `supabase/seed.sql` (enforced by a test).
+
 ## General working rules
 
 - Keep code beginner-readable.

@@ -30,18 +30,18 @@ insert into production_lines (id, code, name, capacity_per_hour, status) values
 -- ==========================================================
 insert into machines
   (id, code, name, machine_type, status, health_state, capacity_per_hour, maintenance_interval_days, last_maintenance_at) values
-  ('b0000000-0000-0000-0000-000000000001', 'M1', 'CNC Mill A', 'CNC Mill', 'operational', 'healthy', 60, 90, now() - interval '20 days'),
+  ('b0000000-0000-0000-0000-000000000001', 'M1', 'CNC Mill A', 'CNC Mill', 'operational', 'healthy', 60, 90, now() - interval '15 days'),
   ('b0000000-0000-0000-0000-000000000002', 'M2', 'CNC Mill B', 'CNC Mill', 'operational', 'healthy', 60, 90, now() - interval '10 days'),
   ('b0000000-0000-0000-0000-000000000003', 'M3', 'Welding Robot', 'Welding Robot', 'operational', 'watch', 50, 60, now() - interval '25 days'),
   ('b0000000-0000-0000-0000-000000000004', 'M4', 'Stamping Press A', 'Stamping Press', 'operational', 'at_risk', 80, 45, now() - interval '5 days'),
-  ('b0000000-0000-0000-0000-000000000005', 'M5', 'Injection Molder', 'Injection Molder', 'operational', 'healthy', 70, 60, now() - interval '30 days'),
+  ('b0000000-0000-0000-0000-000000000005', 'M5', 'Injection Molder', 'Injection Molder', 'operational', 'healthy', 70, 60, now() - interval '12 days'),
   ('b0000000-0000-0000-0000-000000000006', 'M6', 'Hydraulic Press', 'Hydraulic Press', 'operational', 'healthy', 65, 60, now() - interval '20 days'),
   ('b0000000-0000-0000-0000-000000000007', 'M7', 'Stamping Press B', 'Stamping Press', 'operational', 'healthy', 70, 45, now() - interval '18 days'),
   ('b0000000-0000-0000-0000-000000000008', 'M8', 'Packaging Machine', 'Packaging Machine', 'operational', 'healthy', 90, 30, now() - interval '8 days'),
   ('b0000000-0000-0000-0000-000000000009', 'M9', 'Sealing Machine', 'Sealing Machine', 'operational', 'watch', 85, 30, now() - interval '12 days'),
   ('b0000000-0000-0000-0000-000000000010', 'M10', 'Labeling Machine', 'Labeling Machine', 'operational', 'healthy', 100, 45, now() - interval '20 days'),
   ('b0000000-0000-0000-0000-000000000011', 'M11', 'Quality Inspection Station', 'Inspection Station', 'operational', 'healthy', 120, 90, now() - interval '50 days'),
-  ('b0000000-0000-0000-0000-000000000012', 'M12', 'Laser Cutter', 'Laser Cutter', 'operational', 'healthy', 40, 120, now() - interval '40 days');
+  ('b0000000-0000-0000-0000-000000000012', 'M12', 'Laser Cutter', 'Laser Cutter', 'operational', 'healthy', 40, 120, now() - interval '60 days');
 
 -- ==========================================================
 -- machine_line_assignments
@@ -77,31 +77,34 @@ insert into machine_dependencies (machine_id, depends_on_machine_id, dependency_
 -- ==========================================================
 -- orders
 -- ==========================================================
-insert into orders (order_number, production_line_id, quantity, required_production_hours, priority, deadline, status) values
-  ('ORD-0470', 'a0000000-0000-0000-0000-000000000001', 2000, 40, 'normal', now() - interval '20 days', 'completed'),
-  ('ORD-0471', 'a0000000-0000-0000-0000-000000000001', 1500, 30, 'normal', now() - interval '10 days', 'completed'),
-  ('ORD-0472', 'a0000000-0000-0000-0000-000000000001', 3000, 55, 'high', now() - interval '2 days', 'late'),
-  ('ORD-0473', 'a0000000-0000-0000-0000-000000000001', 1800, 35, 'normal', now() + interval '3 days', 'in_progress'),
-  ('ORD-0474', 'a0000000-0000-0000-0000-000000000001', 2200, 42, 'high', now() + interval '6 days', 'in_progress'),
-  ('ORD-0475', 'a0000000-0000-0000-0000-000000000001', 1200, 25, 'low', now() + interval '10 days', 'pending'),
-  ('ORD-0476', 'a0000000-0000-0000-0000-000000000001', 2600, 48, 'normal', now() + interval '15 days', 'pending'),
-  ('ORD-0477', 'a0000000-0000-0000-0000-000000000001', 1900, 34, 'normal', now() + interval '21 days', 'pending'),
+-- required_production_hours is the REMAINING work, in hours of the line
+-- running at its nominal capacity. Fixed ids (c000...<order number>) let
+-- demo scenarios reference orders directly.
+insert into orders (id, order_number, production_line_id, quantity, required_production_hours, priority, deadline, status) values
+  ('c0000000-0000-0000-0000-000000000470', 'ORD-0470', 'a0000000-0000-0000-0000-000000000001', 2000, 40, 'normal', now() - interval '20 days', 'completed'),
+  ('c0000000-0000-0000-0000-000000000471', 'ORD-0471', 'a0000000-0000-0000-0000-000000000001', 1500, 30, 'normal', now() - interval '10 days', 'completed'),
+  ('c0000000-0000-0000-0000-000000000472', 'ORD-0472', 'a0000000-0000-0000-0000-000000000001', 3000, 12, 'high', now() - interval '2 days', 'late'),
+  ('c0000000-0000-0000-0000-000000000473', 'ORD-0473', 'a0000000-0000-0000-0000-000000000001', 1800, 35, 'normal', now() + interval '3 days', 'in_progress'),
+  ('c0000000-0000-0000-0000-000000000474', 'ORD-0474', 'a0000000-0000-0000-0000-000000000001', 2200, 42, 'high', now() + interval '6 days', 'in_progress'),
+  ('c0000000-0000-0000-0000-000000000475', 'ORD-0475', 'a0000000-0000-0000-0000-000000000001', 1200, 25, 'low', now() + interval '10 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000476', 'ORD-0476', 'a0000000-0000-0000-0000-000000000001', 2600, 48, 'normal', now() + interval '15 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000477', 'ORD-0477', 'a0000000-0000-0000-0000-000000000001', 1900, 34, 'normal', now() + interval '21 days', 'pending'),
 
-  ('ORD-0478', 'a0000000-0000-0000-0000-000000000002', 4000, 70, 'normal', now() - interval '15 days', 'completed'),
-  ('ORD-0479', 'a0000000-0000-0000-0000-000000000002', 3200, 60, 'high', now() - interval '5 days', 'completed'),
-  ('ORD-0480', 'a0000000-0000-0000-0000-000000000002', 5000, 90, 'high', now() + interval '2 days', 'in_progress'),
-  ('ORD-0481', 'a0000000-0000-0000-0000-000000000002', 2800, 50, 'normal', now() + interval '5 days', 'in_progress'),
-  ('ORD-0482', 'a0000000-0000-0000-0000-000000000002', 6000, 96, 'critical', now() + interval '4 days', 'at_risk'),
-  ('ORD-0483', 'a0000000-0000-0000-0000-000000000002', 3400, 62, 'normal', now() + interval '9 days', 'pending'),
-  ('ORD-0484', 'a0000000-0000-0000-0000-000000000002', 2600, 48, 'normal', now() + interval '14 days', 'pending'),
-  ('ORD-0485', 'a0000000-0000-0000-0000-000000000002', 3000, 55, 'high', now() + interval '18 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000478', 'ORD-0478', 'a0000000-0000-0000-0000-000000000002', 4000, 70, 'normal', now() - interval '15 days', 'completed'),
+  ('c0000000-0000-0000-0000-000000000479', 'ORD-0479', 'a0000000-0000-0000-0000-000000000002', 3200, 60, 'high', now() - interval '5 days', 'completed'),
+  ('c0000000-0000-0000-0000-000000000480', 'ORD-0480', 'a0000000-0000-0000-0000-000000000002', 5000, 30, 'high', now() + interval '2 days', 'in_progress'),
+  ('c0000000-0000-0000-0000-000000000481', 'ORD-0481', 'a0000000-0000-0000-0000-000000000002', 2800, 18, 'normal', now() + interval '5 days', 'in_progress'),
+  ('c0000000-0000-0000-0000-000000000482', 'ORD-0482', 'a0000000-0000-0000-0000-000000000002', 6000, 56, 'critical', now() + interval '4 days', 'at_risk'),
+  ('c0000000-0000-0000-0000-000000000483', 'ORD-0483', 'a0000000-0000-0000-0000-000000000002', 3400, 62, 'normal', now() + interval '9 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000484', 'ORD-0484', 'a0000000-0000-0000-0000-000000000002', 2600, 48, 'normal', now() + interval '14 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000485', 'ORD-0485', 'a0000000-0000-0000-0000-000000000002', 3000, 55, 'high', now() + interval '18 days', 'pending'),
 
-  ('ORD-0486', 'a0000000-0000-0000-0000-000000000003', 5000, 45, 'normal', now() - interval '8 days', 'completed'),
-  ('ORD-0487', 'a0000000-0000-0000-0000-000000000003', 4200, 38, 'normal', now() - interval '1 days', 'late'),
-  ('ORD-0488', 'a0000000-0000-0000-0000-000000000003', 6000, 52, 'high', now() + interval '3 days', 'in_progress'),
-  ('ORD-0489', 'a0000000-0000-0000-0000-000000000003', 3800, 34, 'normal', now() + interval '8 days', 'pending'),
-  ('ORD-0490', 'a0000000-0000-0000-0000-000000000003', 5200, 46, 'normal', now() + interval '13 days', 'pending'),
-  ('ORD-0491', 'a0000000-0000-0000-0000-000000000003', 4600, 40, 'low', now() + interval '20 days', 'pending');
+  ('c0000000-0000-0000-0000-000000000486', 'ORD-0486', 'a0000000-0000-0000-0000-000000000003', 5000, 45, 'normal', now() - interval '8 days', 'completed'),
+  ('c0000000-0000-0000-0000-000000000487', 'ORD-0487', 'a0000000-0000-0000-0000-000000000003', 4200, 10, 'normal', now() - interval '1 days', 'late'),
+  ('c0000000-0000-0000-0000-000000000488', 'ORD-0488', 'a0000000-0000-0000-0000-000000000003', 6000, 40, 'high', now() + interval '3 days', 'in_progress'),
+  ('c0000000-0000-0000-0000-000000000489', 'ORD-0489', 'a0000000-0000-0000-0000-000000000003', 3800, 34, 'normal', now() + interval '8 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000490', 'ORD-0490', 'a0000000-0000-0000-0000-000000000003', 5200, 46, 'normal', now() + interval '13 days', 'pending'),
+  ('c0000000-0000-0000-0000-000000000491', 'ORD-0491', 'a0000000-0000-0000-0000-000000000003', 4600, 40, 'low', now() + interval '20 days', 'pending');
 
 -- ==========================================================
 -- maintenance_events

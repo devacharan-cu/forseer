@@ -33,6 +33,15 @@ npx supabase db push        # applies migrations
 psql "$DATABASE_URL" -f supabase/seed.sql   # or: supabase db reset (local dev)
 ```
 
+### Simulation engine
+
+The deterministic engine in [src/engine/](src/engine/) is documented in [docs/SIMULATION_ENGINE.md](docs/SIMULATION_ENGINE.md).
+
+```bash
+npm test              # engine test suite (Node's built-in test runner)
+npm run engine:demo   # prints the NOVA-01 hero scenarios computed by the engine
+```
+
 ## Project status
 
-This repository is currently at **Phase 1 — Backend & Data Foundation**. The database schema, seed data, and `src/api/` data access layer are in place. No simulation engine, AI integration, or dashboard UI has been implemented yet. See [CLAUDE.md](CLAUDE.md) for the permanent project rules guiding future phases.
+This repository is currently at **Phase 2 — Deterministic Simulation Engine**. The database schema, seed data, `src/api/` data access layer, and the tested simulation engine are in place. No AI integration or dashboard UI has been implemented yet. See [CLAUDE.md](CLAUDE.md) for the permanent project rules guiding future phases.
