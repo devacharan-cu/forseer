@@ -170,6 +170,10 @@ export function deadlineTone(status) {
   return { BREACHED: 'danger', CRITICAL: 'danger', WARNING: 'warning', SAFE: 'success' }[status] ?? 'neutral'
 }
 
+export function severityTone(severity) {
+  return { critical: 'danger', high: 'danger', medium: 'warning', low: 'neutral' }[severity] ?? 'neutral'
+}
+
 export function stateTone(engineState) {
   return (
     {

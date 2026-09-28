@@ -16,12 +16,24 @@ import { FactoryDataProvider, useFactoryData } from './state/FactoryDataContext.
 const CommandCenter = lazy(() => import('./pages/CommandCenter.jsx'))
 const MachineIntelligence = lazy(() => import('./pages/MachineIntelligence.jsx'))
 const ScenarioLab = lazy(() => import('./pages/ScenarioLab.jsx'))
+const Before = lazy(() => import('./pages/Before.jsx'))
+const During = lazy(() => import('./pages/During.jsx'))
+const After = lazy(() => import('./pages/After.jsx'))
+const OrdersProduction = lazy(() => import('./pages/OrdersProduction.jsx'))
+const IncidentsMaintenance = lazy(() => import('./pages/IncidentsMaintenance.jsx'))
+const Reports = lazy(() => import('./pages/Reports.jsx'))
 
 // Pages that need the factory data wait for it here.
 const DATA_PAGES = {
   'command-center': CommandCenter,
   'machine-intelligence': MachineIntelligence,
   'scenario-lab': ScenarioLab,
+  before: Before,
+  during: During,
+  after: After,
+  'orders-production': OrdersProduction,
+  'incidents-maintenance': IncidentsMaintenance,
+  reports: Reports,
 }
 
 const STATIC_PAGES = {

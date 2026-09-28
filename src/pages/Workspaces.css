@@ -1,0 +1,200 @@
+/* Shared layout for the Before / During / After / Orders / Incidents / Reports
+   workspaces: a header, an optional stat strip, and stacked real-data cards. */
+
+.fs-ws {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs-space-4);
+}
+
+.fs-ws__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--fs-space-4);
+  flex-wrap: wrap;
+}
+
+.fs-ws__header .fs-page__title {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-2);
+}
+
+.fs-ws__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--fs-space-3);
+}
+
+.fs-ws__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding: var(--fs-space-3) var(--fs-space-4);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-lg);
+  background: var(--fs-surface);
+}
+
+.fs-ws__stat--warning {
+  border-color: var(--fs-warning-border);
+  background: var(--fs-warning-bg);
+}
+
+.fs-ws__stat--danger {
+  border-color: var(--fs-danger-border);
+  background: var(--fs-danger-bg);
+}
+
+.fs-ws__stat-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--fs-text-secondary);
+}
+
+.fs-ws__stat-value {
+  font-size: var(--fs-text-2xl);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Row list used for at-risk machines, incidents, resolved records, etc. */
+.fs-ws__rows {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs-space-3);
+}
+
+.fs-ws__row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: var(--fs-space-4);
+  padding: var(--fs-space-4);
+  border: 1px solid var(--fs-border);
+  border-radius: var(--fs-radius-lg);
+  background: var(--fs-surface);
+}
+
+.fs-ws__row--danger {
+  border-color: var(--fs-danger-border);
+}
+
+.fs-ws__row--warning {
+  border-color: var(--fs-warning-border);
+}
+
+.fs-ws__row-main {
+  flex: 1;
+  min-width: 240px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs-space-2);
+}
+
+.fs-ws__row-head {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-2);
+  flex-wrap: wrap;
+}
+
+.fs-ws__row-code {
+  font-family: var(--fs-font-mono);
+  font-weight: 700;
+  font-size: var(--fs-text-lg);
+}
+
+.fs-ws__row-name {
+  color: var(--fs-text-secondary);
+}
+
+.fs-ws__row-note {
+  font-size: var(--fs-text-sm);
+  color: var(--fs-text-secondary);
+}
+
+.fs-ws__row-quote {
+  font-size: var(--fs-text-sm);
+  font-style: italic;
+  color: var(--fs-text);
+}
+
+.fs-ws__signals {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.fs-ws__signals li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 9px;
+  border-radius: var(--fs-radius-full);
+  background: var(--fs-bg-subtle);
+  border: 1px solid var(--fs-border);
+  font-size: var(--fs-text-xs);
+  color: var(--fs-text-secondary);
+}
+
+.fs-ws__signals strong {
+  color: var(--fs-text);
+}
+
+.fs-ws__row-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--fs-space-2);
+  flex-shrink: 0;
+}
+
+.fs-ws__row-actions .fs-btn {
+  white-space: nowrap;
+}
+
+.fs-ws__empty {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-3);
+  padding: var(--fs-space-4);
+  border: 1px dashed var(--fs-border-strong);
+  border-radius: var(--fs-radius-lg);
+  color: var(--fs-text-secondary);
+  font-size: var(--fs-text-sm);
+}
+
+.fs-ws__empty svg {
+  flex-shrink: 0;
+  color: var(--fs-success);
+}
+
+.fs-ws__section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--fs-space-2);
+  margin: 0;
+  font-size: var(--fs-text-base);
+  font-weight: 600;
+}
+
+.fs-ws__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--fs-space-2);
+}
+
+@media print {
+  .fs-sidebar,
+  .fs-topbar,
+  .fs-ws__no-print {
+    display: none !important;
+  }
+
+  .fs-shell__content {
+    overflow: visible !important;
+  }
+}
